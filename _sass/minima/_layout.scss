@@ -107,7 +107,7 @@
  */
 .site-footer {
   border-top: 1px solid $grey-color-light;
-  padding: $spacing-unit 0;
+  padding: $spacing-unit / 2 0;
 }
 
 .footer-heading {
@@ -115,10 +115,13 @@
   margin-bottom: $spacing-unit / 2;
 }
 
-.contact-list,
-.social-media-list {
+.contact-list {
   list-style: none;
   margin-left: 0;
+}
+.social-media-list {
+  list-style: none;
+  margin-left: 5px;
 }
 
 .footer-col-wrapper {
