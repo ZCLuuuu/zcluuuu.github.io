@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-## The Person
+## Who am I
 
 Hi! I am **Chew (Qiuyi)**. I'm currently a master's student at the **University of Melbourne** studying Computer Science. My current interests include **distributed system**, **computation theory** and **programming languages**. Feel free to contact me if you are interested. 
 
