@@ -142,6 +142,10 @@
   }
 }
 
+footer-col-rss {
+  margin-top: 5px;
+}
+
 .footer-col-1 {
   width: -webkit-calc(35% - (#{$spacing-unit} / 2));
   width:         calc(35% - (#{$spacing-unit} / 2));
@@ -202,6 +206,17 @@
 
   > li {
     margin-bottom: $spacing-unit;
+
+    &:not(:last-of-type)::after{
+      content: ' ';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $grey-color-light;
+
+      position: relative;
+      top: $spacing-unit / 2;
+    }
   }
 }
 
