@@ -2,6 +2,7 @@
 layout: post
 title:  "Types and References in CPP"
 categories: [C++]
+description: Data Type, Pointers, Addresses and Object initialization
 ---
 
 ## Types

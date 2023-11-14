@@ -2,6 +2,7 @@
 layout: post
 title:  "Functional Programming In Coq"
 categories: [Software Foundations]
+description: What is software validation, proofers and basic programming
 ---
 
 Introduction: I am studying the online book [software foundations](https://softwarefoundations.cis.upenn.edu/). Then I decide to write something about it for me to better understand this toy from a learner's perspective. I'm happy if these articles can help you.
