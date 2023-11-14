@@ -24,6 +24,7 @@ size_t n_elements = sizeof(array) / sizeof(short);
 ### Class & Struct
 * The main difference between a class and a struct is the default access level.  Class is `private` by default while a struct is `public` by default.
 * Structs are called PODs (plain old data) by some programmers.
+
 ### Initialization
 These 4 methods are initialize variables to 0.
 
