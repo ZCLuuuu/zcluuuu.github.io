@@ -118,6 +118,7 @@
 .contact-list {
   list-style: none;
   margin-left: 0;
+  margin-bottom: 0;
 }
 .social-media-list {
   list-style: none;
@@ -135,6 +136,10 @@
   float: left;
   margin-bottom: $spacing-unit / 2;
   padding-left: $spacing-unit / 2;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .footer-col-1 {
