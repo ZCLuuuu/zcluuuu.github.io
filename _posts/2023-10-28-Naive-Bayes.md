@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Simple Theory of Naive Bayes Classifier
-categories: [Machine Learning]
+categories: [MachineLearning]
 description: The math foundation
 ---
 
