@@ -205,6 +205,10 @@
   color: $grey-color;
 }
 
+.dt-tags {
+  margin-left: 10px;
+}
+
 .post-link {
   display: block;
   @include relative-font-size(1.5);
