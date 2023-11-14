@@ -5,98 +5,162 @@ categories: [Machine Learning]
 description: The math foundation
 ---
 
-## Probabilistic Model
+## Basic Bayesian Decision Theory
 
-We want to predict the most probable class $\hat{y}$ of an observation x: 
-
-$$
-\hat{y} = \arg\max_{y\in Y} P(y|x)
-$$
-
-With Bayes’s theorem, the object becomes:
+Suppose in a data set, there are N distinct class labels, that is:
 
 $$
-\hat{y} = \arg\max_{y\in Y} \frac{P(x|y)P(y)}{P(x)}\\
- =\arg\max_{y\in Y} P(x|y)P(y) \tag{P(x) is fixed}
+y = \{ c_1, c_2, ...c_n\}
 $$
 
-This equation means that we transform the task of “finding the possibility of instance being class y when x observed” to “finding the frequency of x in data set under class y” 
-
-Finally, make the **conditional independence assumption** that features are assumes to be independent.(The probability of independent events are the product of each combined.) 
+What we want to do now is to calculate which class is the most probable one, that is:
 
 $$
-\hat{y} = \arg\max_{y\in Y} P(y)\prod_{m=1}^M P(x_m|y) \tag1
+h^* = \arg\max_{c\in y} P(c|x)
 $$
 
-### NB as a classifier
+P(c\|x) is the posterior probability of given instance $ x = \{x_1,x_2, ..., x_d\} $, the probability of x to be c. The function argmax means we want to output the class $ c \in \{ c_1, c_2, ...c_n\} $ which gives the highest posibility.
 
-Training Phase: Calculate each P(y_i) and P(x_m \| y_i)
+According to bayes’ theorem, $P(c\|x)$ can be written as
 
-Testing Phase: Equation 1
+$$
+P(c|x) = \frac{P(c)P(x|c)}{P(x)}
+$$
 
-### NB as a generative model
+Because P(x) is the probability of the probability of instance being x, which is a fixed value and doesn’t have an impact on the problem we want to solve (to determine which class c is of highest probability). As we don’t want to know the actual probability of x being c( we just want to know the highest one), we can omit calculate P(x):
 
-```bash
-Input: generate N instances, each instance has M features
-Model = for i in {1...N} do:
-	generate label y[i] from P(y)
-	for feature m in {1...M} do:
-		generate feature x[m] from P(m, y[i])
-```
+$$
+\hat{c} = \arg\max_{c \in y} P(c)P(x|c) 
+$$
 
-## NB Variants
+I interpret this formula to be:
 
-Naive Bayes estimate P(x_m\|y) based on feature type
+“Given an observation x, find the class c, which can maximize the likelihood ‘x being the class c’.”  
 
-- Gaussian Naive Bayes:
-    - For real-valued numerical features
-    - Estimating P(x_m \| y) by normal distribution
-- Bernoulli Naive Bayes
-- Categorical Naive Bayes
-    - **Estimating P(x_m \| y) simply by counting**
+Because x contains many features x = $[x_1, x_2, ..., x_m]$ ,thus
 
-### Maximum Likelihood Estimating
+$$
+\hat{c} = \arg\max P(x_1, x_2, ..., x_m|c)P(c)
+$$
 
-Naive Bayes learn parameters by MLE. For example, in Gaussian Naive Bayes, the parameter mean and standard deviation are learned by applying MLE. 
+We can just use the frequency of c as P(c), it’s a efficiently computable way to do that. What really matter is $ P(x\|c) $. If every instance in the dataset has d binary attributes, there are 2^d combination of attributes. The probability of one instance with a label c being a specific attributes $x = \{x_1,x_2, ..., x_m\}$ is hard to estimate.
 
-### Smoothing
+## Naive Bayes Classifier Theory
 
-Problem: In Categorical Naive Bayes, if any term P(x_m \| y) = 0, then P(y\|x) =0. (No such class-feature combination)
+Because P(x\|c) is hard to get, the naive bayes classifier make an assumption to reduce this problem to another rather easy one: **Assume** 
 
-Solution: 
-
-1. Epsilon Smoothing: Replace any P(x_m \| y) = 0 with a very small number epsilon < 1/N
-2. Laplace Smoothing: Add a constant to each feature count
+- **all attributes of instance are independent,** so we can transform the object faction
+    
+     
     
     $$
-    P(x_m=j|y=k)=\frac{\alpha + count(y=k,x_m=j)}{M\alpha + count(y=k)}
+    \hat{y} = \arg\max_{y \in y} P(y)P(x|y) = \arg\max_{y \in y} P(x,y)
     $$
     
-    where M is the number of possible values of target feature
+    and we can estimate P(x\|y) to be
     
-    Issues:
+
+$$
+P(x_1, x_2, ..., x_m|y) = P(x_1|y)P(x_2|y)...P(x_m|y) = \prod_{m=1}^PP(x_m|y)
+$$
+
+- **continuous attributes comply the Gaussian Distribution.**
     
-    - Change drastically when there are few instances
-    - Reduce Variance because it reduces sensitive to individual observations
-    - Add bias because we can’t get a true MLE
+    $$
+    \begin{equation}
+        f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+    \end{equation}
+    $$
+    
+    where 
+    
+    - $\mu$ is the mean of the distribution
+    - $\sigma^2$ is the variance of the distribution.
+- The distribution of data in the training set is the same as the distribution of data in the test set
 
-Continuous (Gaussian) features do not have issue with unseen data, but we may get 0 standard deviation in extreme case, which requires smoothing as well but uncommon than categorical features. 
+With this assumption, we can easily estimate
 
-## Implementation of NB
+$$
+P(x|c) = \prod_{m=1}^PP(x_m|c)
+$$
 
-- Use dictionaries for counting
-- Choose a type of smoothing
-- Use log-transformation to avoid underflow
+So that
 
-## Summary
+$$
+P(x,y) =P(y)\prod_m^M P(x_m|y)
+$$
 
-Pros:
+A really simple idea to implement P
 
-- easy to build, train and test
-- easy to scale with high dimensional feature space
-- reasonably explainable
+- For discrete features, $ P(x_i\|c) $ is the frequency of instances which has a class c and has the attribute x_i.
+    
+    $$
+    P(x_i|c) = \frac{|D_{c,x_i}|}{|D_c|}
+    $$
+    
+    where $\|D_{c,x_i}\|$ is simply the number of instances with class c and attribute c_i.
+    
+- For continuous features, we assume these features comply gaussian distribution, thus we can use the formular to calculate its possibility.
 
-Cons:
+ Thus, the calculation of naive bayes classifier can be quite simple.
 
-- Naive assumption
-- Smoothing introduces bias
+## Types of NB Classifier
+
+We are going to build a classifier for $x \rightarrow y$, where x is an observation of instance and y is the class
+
+### Gaussian Naive Bayes
+
+**Apply if features of x are numerical (real-valued) and y is binary.**
+
+For each y, calculate
+
+$$
+p(x,y) = p(y)\prod_m^M p(x|y)\\
+=BN(y|\phi)\prod_m^M N(x|\psi=\{\mu_{m,y}, \delta_{m,y}\})
+$$
+
+where BN is the probability of y under bernoulli distribution and N is the probability of x under gaussian distribution. 
+
+Find the distribution:
+
+[Distribution](https://www.notion.so/Distribution-09f29a398a8c4520b5566df8f440e754?pvs=21)
+
+Find the y which maximize p(x,y)
+
+### Bernoulli Naive Bayes
+
+**Apply if features of x are binary and y is binary**
+
+Similar to gaussian naive bayes, the object function is:
+
+$$
+p(x,y) = p(y)\prod_m^M p(x|y)\\
+=BN(y|\mu_y)\prod_m^M BN(x|\mu_x)
+$$
+
+### Categorical Naive Bayes
+
+**Apply if features of x are and y are categorical**
+
+$$
+p(x,y) = p(y)\prod_m^M p(x|y)\\
+=Cat(y|\phi)\prod_m^M Cat(x|\psi)
+$$
+
+where Cat is the categorical distribution probability. In practice, one can just count the instances in the dataset to get the probability
+
+$$
+Cat(y) = \frac{count(y)}{N}
+$$
+
+## Smoothing
+
+Even in Naive Bayes Classifier, chances are there could be not enough instance has a specific value of feature and a class (unseen features). Thus some of the $ P(x_i\|c) $ could be 0, which is a destroyer to our classifier because $ \prod_{i=0}^dP(x_i\|c) $ will be 0 if one of the term is 0.
+
+Smoothing is a technique to solve this problem. The most common one is Laplacian correction, which simply add one to the numerator:
+
+$$
+P(x_i|c) = \frac{|D_{c,x_i}| + 1}{|D_c|}
+$$
+
+This technique can avoid $ \|D_{c,x_i}\| $ being 0.
