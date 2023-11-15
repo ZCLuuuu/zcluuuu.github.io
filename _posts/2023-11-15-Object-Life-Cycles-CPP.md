@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Object Life Cycles in CPP"
+title:  "Object Life Cycles [CPP]"
 categories: [C++]
 description: "Principals of objects life cycle; good practice: exceptions, RAII, copy and move operations"
 ---
