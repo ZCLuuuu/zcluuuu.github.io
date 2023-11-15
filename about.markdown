@@ -10,4 +10,6 @@ Hi! I am **Chew (Qiuyi)**. I'm currently a master's student at the **University 
 
 ## The Blog
 
-I agree that writing can help me to organize my thoughts and this blog is mainly for me to organize and share the knowledge in the field of CS. I used to write a blog in Chinese: [Archive](https://excitedspider.github.io/archive.excitedspider.github.io/). After moving to Melbourne, I decided to use English to write a whole new Blog. 
+I have a long hobby of writing and I believe that writing can help me to organize my thoughts. This blog is mainly for me to organize and share the knowledge in the field of CS. By the way, I used to write a blog in Chinese: [Archive](Archive). After moving to Melbourne, I decided to use English to write a whole new blog, for language practices as well. 
+
+[Archive]: https://excitedspider.github.io/archive.excitedspider.github.io/
