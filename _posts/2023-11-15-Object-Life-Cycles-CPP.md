@@ -192,6 +192,7 @@ Note that **members are constructed before the enclosing object's constructor**,
 	char *strncpy(char *dest, const char *src, size_t n);
 	```
 - The program manually maintain a `\0` at the end of the string. Though it is easy to implement but many programmers simply forget. 
+
 ### Exceptions and Error Code
 The `SimpleString` class throws `runtime_error` when there is no enough buffer in the constructor, while use error code in `append_line` function to indicate if the operations are executed successfully.  This design is idiomatic in CPP: In the former one, the error cannot be handled locally (The constructor cannot know why it is invoked with 0 space), On the other hand, the later can handles error properly.
 
