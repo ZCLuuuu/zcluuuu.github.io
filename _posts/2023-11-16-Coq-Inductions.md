@@ -100,7 +100,7 @@ Qed.
 Translated informal proof:
 - Theorem: for all n and m, n + m = m + n
 
-	Proof:
+	Proof by induction on n.
 	- First, suppose n = 0, we want to show that
 
 	    0 + m = m + 0.
