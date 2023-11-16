@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Brief Introduction to Quantum Computing
+title:  Gentle Introduction to Quantum Computing
 categories: [Quantum_Computing]
 description: A highly overview of quantum computing without math.
 ---
