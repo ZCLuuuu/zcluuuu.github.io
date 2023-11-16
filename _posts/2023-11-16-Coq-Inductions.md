@@ -82,8 +82,8 @@ Proof.
 
 ## Formal & Informal Proof
 What are we writing are *formal proofs*, in which the readers are programs, like Coq. There are some differences comparing to *informal proofs*, which are human-readable. 
-- In formal proof, the state of each step is implicit, while informal proof could reminds the readers several times where things stand.
-- It is required to follow the definition of tactics in formal proof. In informal proof, the proof is written in natural language, and can be flexible for different level of readers. 
+- In formal proof, the state of each step is **implicit**, while informal proof could reminds the readers several times where things stand.
+- It is required to follow the exact definition of tactics in formal proof. In informal proof, the proof is written in **natural language**, and can be flexible for different level of readers. 
 For learners, a good practice is to translate the formal proof into an informal one.
 
 Example:
@@ -113,7 +113,7 @@ Translated informal proof:
       
       for all n, n + 0 = n. 
       
-      Thus it can be rewrited to
+      Thus it can be re-wrote to
       
       m + 0 = m. 
       
@@ -139,3 +139,5 @@ Translated informal proof:
       S (m + n') = S(n' + m).
 
 	    Which is identical to the left side. Qed.
+
+The style of this proof is a little pedantic tho, but it's valid. This example shows that the formal proof can be translated into an informal proof which is often the case when doing math.
