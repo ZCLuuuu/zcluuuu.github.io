@@ -99,18 +99,43 @@ Qed.
 
 Translated informal proof:
 - Theorem: for all n and m, n + m = m + n
+
 	Proof:
 	- First, suppose n = 0, we want to show that
+
 	    0 + m = m + 0.
-	For the left side, we use the definition of plus. 0 + m = m.
-	For the right side, we learned from `add_n_O` theorem that for all n, n + 0 = n. Thus m + 0 = m. The both side equals.
+          
+      For the left side, we use the definition of +. 
+        
+        0 + m = m.
+
+      For the right side, we learned from `add_n_O` theorem that 
+      
+      for all n, n + 0 = n. 
+      
+      Thus it can be rewrited to
+      
+      m + 0 = m. 
+      
+      The both side equals.
 	- Second, suppose n = S n' and n' + m = m + n', we want to show that 
-	    S n' + m = m + S n'
-	By the definition of +,  we have 
-    S n' + m = S(n' + m)
-    From `plus_n_Sm` theorem we learned forall n m : nat, S (n + m) = n + (S m).
-    By the `plus_n_Sm` theorem:
-	    m + S n' = S (m + n').
-	Use the induction hypothesis, this follows from
-	    S (m + n') = S(n' + m).
-	Which is identical to the left side. Qed.
+	    
+      S n' + m = m + S n'
+
+	  For the left side. we have 
+
+      S n' + m = S(n' + m)
+
+      By the definition of operator +. From `plus_n_Sm` theorem we learned 
+    
+      forall n m : nat, S (n + m) = n + (S m).
+
+      We can rewrite the right side by the `plus_n_Sm` theorem:
+
+      m + S n' = S (m + n').
+    
+	    Use the induction hypothesis, this follows from
+	  
+      S (m + n') = S(n' + m).
+
+	    Which is identical to the left side. Qed.
