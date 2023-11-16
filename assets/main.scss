@@ -3,3 +3,7 @@
 ---
 
 @import "minima";
+
+p:has( > img) {
+  text-align: center;
+}
