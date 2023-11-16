@@ -61,16 +61,24 @@ It's really hard to explain the details of these algorithms and machine learning
 I want to use this section to show that the math in quantum computing in most occasions is just simple linear algebra.
 
 For a more formal definition, a **qubit** (a bit in quantum system) can be represented by a single qubit system, where the bit is in a superposition of 0 and 1
+
 $$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$
+
 where the coefficients $\alpha, \beta$ is related to the possibility of the state.  (Here the $\ket{\psi}$ is the ket-notation. It's just a conventional notation for quantum states. It does not have other sophisticated meaning.)
 Similarly a multi-qubit systems can be in a superposition of many states
+
 $$
 \ket{\psi} = b_0 \ket{b_0} + b_1 \ket{b_1} + ... + b_n \ket{b_n}
 $$
+
 An operation on the quantum state is represented by a Unitary matrix
+
 $$\ket{\Psi(t+1)} = U\ket{\Psi(t)}$$
+
 The possibility of find the quantum state in a specific state in measurement is related to the coefficient:
+
 $$p(x_i) = \frac{\vert c_i \vert}{\sum_j \vert c_j \vert}$$
 
+See, it's easy. For anyone who is confident with undergraduate linear algebra knowledge, I recommend to take a few subjects about quantum computing. The math can not tear you apart, and this field is quite interesting. Really feed one's curiosity typically if you like sci-fi matters or a computation theory hunger.  
 
 [Computational capacity of the universe]: https://arxiv.org/abs/quant-ph/0110141
