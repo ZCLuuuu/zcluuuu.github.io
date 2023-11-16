@@ -5,7 +5,7 @@ categories: [Quantum_Computing]
 description: A highly overview of quantum computing without math.
 ---
 
-I took Quantum Software Fundamentals (COMP90084) subject in the University of Melbourne in 2023 s2. Perhaps this subject is my only exposure to quantum computing, so I decided to write a summary. All the content related to quantum computing contains huge bunch of math, which I really don't like for new-comers to read. So I'll try my best to make this article out of math pedantic.
+I took Quantum Software Fundamentals (COMP90084) subject in the University of Melbourne in 2023 s2. This subject is my first, and perhaps the only exposure to quantum computing in my life, so I decided to write a summary. All the content related to quantum computing contains huge bunch of math, which I really don't like for new-comers to read. So I'll try my best to make this article out of math pedantic.
 
 ## What is Quantum Computing
 For short: a quantum computer is a computer that takes advantage of quantum mechanical phenomena. (from [Wikipedia: quantum computing](https://en.wikipedia.org/wiki/Quantum_computing))
