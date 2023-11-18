@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Runtime Polymorphism [Coq]"
-categories: [Software_Foundations]
+title:  "Runtime Polymorphism [C++]"
+categories: [C++]
 description: Pure Virtual Classes as Interfaces, Runtime Polymorphism by Composition
 ---
 ## Polymorphism
