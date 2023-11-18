@@ -33,6 +33,8 @@ author: Chew (Qiuyi) Feng
 paginate: 5
 paginate_path: "/page:num/"
 
+markdown: kramdown
+
 # Build settings
 theme: minima
 minima:
@@ -40,6 +42,7 @@ minima:
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-toc
 
 # Exclude from processing.
 # The following items will not be processed, by default.

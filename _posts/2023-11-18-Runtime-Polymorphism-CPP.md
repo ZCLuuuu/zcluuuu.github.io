@@ -4,6 +4,10 @@ title:  "Runtime Polymorphism in CPP"
 categories: [C++]
 description: Pure Virtual Classes as Interfaces, Runtime Polymorphism by Composition
 ---
+
+* TOC
+{:toc}
+
 ## Polymorphism
 Polymorphism means code that allows programmers **write only once** but is able to **reuse with different types**. Ideally, polymorphism yields **loosely coupled** and **highly reusable** code.
 C++ offers 2 types of polymorphism:
