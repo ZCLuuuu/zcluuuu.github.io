@@ -23,13 +23,13 @@ Hi! I am **Chew (Qiuyi)**. I'm currently a master's student at the **University 
 
 ### Employment
 
-- January 2022 - July 2023 | Shanghai, China
+- January 2022 - July 2023
 
-  Software Engineer at [ByteDance Ltd] in Tiktok Eng group. Focuses on web development. 
+  Software Engineer at [ByteDance Ltd] in Tiktok Eng group at Shanghai, China. Focuses on web development. 
 
-- June 2020 - December 2021 | Shanghai, China
+- June 2020 - December 2021
  
-  Software Engineer at [Tencent Ltd] in Wechat advertisement business group. Mainly web and mobile development.
+  Software Engineer at [Tencent Ltd] in Wechat advertisement business group at Shanghai, China. Mainly web and mobile development.
 
 [Tencent Ltd]: https://www.tencent.com/en-us/
 [ByteDance Ltd]:https://www.bytedance.com/en/
