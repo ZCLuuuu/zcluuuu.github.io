@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Basic Data Structures [Coq]"
+title:  "Reasoning Proofs with Basic Data Structures"
 categories: [Software_Foundations]
 description: Pair, List, Map, Options
 ---
