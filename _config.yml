@@ -42,7 +42,6 @@ minima:
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-toc
 
 # Exclude from processing.
 # The following items will not be processed, by default.
