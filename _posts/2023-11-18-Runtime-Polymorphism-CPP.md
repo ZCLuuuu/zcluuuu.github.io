@@ -9,6 +9,7 @@ Polymorphism means code that allows programmers **write only once** but is able 
 C++ offers 2 types of polymorphism:
 - **Compile-time polymorphic** code incorporates different types at compile time.
 - **Runtime-polymorphic** code incorporates different types at runtime. 
+
 Which approach to choose depends on **what stage** you can **determine the type**. That is, if it is only at the run time that the target type can be determined, then you should consider using runtime-polymorphism. 
 
 ## Runtime Polymorphism
