@@ -30,10 +30,16 @@ github_username:  excitedspider
 
 author: Chew (Qiuyi) Feng
 
+paginate: 5
+paginate_path: "/page:num/"
+
 # Build settings
 theme: minima
+minima:
+  skin: solarized-light
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 # Exclude from processing.
 # The following items will not be processed, by default.
