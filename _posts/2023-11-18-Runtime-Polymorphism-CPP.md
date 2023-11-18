@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Runtime Polymorphism [C++]"
+title:  "Runtime Polymorphism in CPP"
 categories: [C++]
 description: Pure Virtual Classes as Interfaces, Runtime Polymorphism by Composition
 ---
