@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Reasoning Proofs with Basic Data Structures"
-categories: [Software_Foundations]
+categories: [Software-Foundations]
 description: Pair, List, Map, Options
 ---
 This note refers to the the online book series [software foundation].

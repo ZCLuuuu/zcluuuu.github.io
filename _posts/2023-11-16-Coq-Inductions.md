@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Induction, Sub-theorems and Informal Proof [Coq]"
-categories: [Software_Foundations]
+categories: [Software-Foundations]
 description: Study Notes of software validation
 ---
 ## Proof by Induction

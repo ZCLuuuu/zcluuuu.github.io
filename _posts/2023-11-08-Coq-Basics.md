@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Function Programming and Basic Proofs [Coq]"
-categories: [Software_Foundations]
+categories: [Software-Foundations]
 description: Study Notes on what is software validation, proofers and basic programming
 ---
 

@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<h1>{{ page.categories }}</h1>
+
+{% if page.description %}
+  <p>{{ page.description }}</p>
+{% endif %}
+
+{% if page.content %}
+<div class="post-content">
+  {{ page.content }}
+</div>
+<h2>Posts</h2>
+{% endif %}
+
+<div id="archives">
+  {% assign category_posts = site.categories[page.categories] %}
+  <div class="archive-group">
+    <ul class="post-list">
+        {% for post in category_posts %}
+        <li>
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <span class="post-meta">{{ post.date | date: date_format }}
+            {%- if post.categories -%}
+            <span>
+              Tags:
+              {% for item in post.categories %}
+                <span>{{ item }}</span>
+              {% endfor %}
+            </span>
+            {%- endif -%}
+          </span>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {{ post.description }}
+          
+          {%- if site.show_excerpts -%}
+            {{ post.excerpt }}
+          {%- endif -%}
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+</div>
