@@ -152,7 +152,7 @@ static_assert(!has_bool_value_member<S3>);
 static_assert(has_bool_value_member<S4>);
 static_assert(!has_bool_value_member<S5>);
 ```
-The `std::convertible_to` is a standard concept in `<concept>` header. There are many other standard library concepts as well: [\<concept\>](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0898r3.pdf). We can also make use of [Standard library header <type_traits> (C++11)](https://en.cppreference.com/w/cpp/header/type_traits) as concepts as well:
+The `std::convertible_to` is a standard concept in `<concept>` header. There are many other standard library concepts as well: [\<concept\>](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0898r3.pdf). We can also make use of [Standard library header <type_traits>](https://en.cppreference.com/w/cpp/header/type_traits) as concepts as well:
 
 ```cpp
 #include <type_traits>
@@ -229,6 +229,8 @@ class MyClass2
 
 ## Polymorphism at Runtime vs Compile Time
 Compile time polymorphism has more advantages: higher performance, more predictable and more readable. It is generally commended to use runtime polymorphism (templates). But sometimes you won't know the types used with your code until runtime. In such cases, use runtime polymorphism instead. 
+
+For more information about runtime polymorphism, check my another post:[Runtime-Polymorphism-CPP]({% post_url 2023-11-18-Runtime-Polymorphism-CPP %})
 
 ## Example: function `mode`
 The mode of a series of values is the value that appears most commonly. The implementation follows:
