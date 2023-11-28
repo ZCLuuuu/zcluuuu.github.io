@@ -1,14 +1,12 @@
 ---
 layout: post
-title:  "Operators in CPP"
+title:  "Operator Applications [CPP]"
 categories: [C++]
 description: Those confusing stuff.
 ---
 
 * TOC
 {:toc}
-
-This article will not elaborately go through all content related to operators in CPP. In stead, it focuses on concepts that are sometimes easily misunderstood but useful. 
 
 ## Member Access Operators
 One of the most confusing operators families are the member access operators:
@@ -263,3 +261,7 @@ int main() {
 }
 ```
 In this example, class `Celsius` defines a conversion to float Fahrenheit and the program employs `static_cast` to perform casting.
+
+## Summary
+
+This article discussed 2 topics: memory management and type conversions, which are great examples of how operators are used in modern CPP.
