@@ -2,7 +2,7 @@
 layout: post
 title:  "Operators in CPP"
 categories: [C++]
-description: Those confusing stuff in CPP.
+description: Those confusing stuff.
 ---
 
 * TOC
