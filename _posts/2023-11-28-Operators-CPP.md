@@ -9,6 +9,7 @@ description: Those confusing stuff in CPP.
 {:toc}
 
 This article will not elaborately go through all content related to operators in CPP. In stead, it focuses on concepts that are sometimes easily misunderstood but useful. 
+
 ## Member Access Operators
 One of the most confusing operators families are the member access operators:
 - subscript `[]`
@@ -17,8 +18,10 @@ One of the most confusing operators families are the member access operators:
 - member-of-object `.`
 - member-of-pointer `->`
 It's often confused which operators are suitable to use. Fortunately, compilers and IDE are very good at telling the types and largely ease the pain. 
+
 ## Manual Memory Management by Operators
 One way to manually manage *free store* (which is also known as *heap* in CPP, but I don't really like this ambiguous name) is to overload the operator `new`.
+
 ### Motivation
 Each time program invokes `new` , what it actually happens is CPP asks the OS to allocate a new free store in memory (`HeapAlloc` on Windows or `malloc` on Unix). In some settings, free store allocations simply involve too much latency - i.e. high-frequency trading so one may want to avoid it. A general way to do this is to allocate a big space on the launch of the program and then allocate to variables who need storage. 
 
@@ -106,6 +109,7 @@ int main() {
 }
 
 ```
+
 ### Placement Operators
 Another interesting set of operators that can manage memory is the *Placement Operators*.
 ```cpp
@@ -159,6 +163,7 @@ o2:Destructor of MyClass called.
 o3:Destructor of MyClass called.
 o1:Destructor of MyClass called.
 ```
+
 ## Precedence and Evaluation Order
 A fact: CPP language standard explicitly defines the precedence of operators (e.g. In the expression `a + b*c`, the product operator has higher precedence than the sum operator), but **it does not define the evaluation order**. This is because the language wants to give compiler writers to find clever optimization opportunities.
 
@@ -172,8 +177,10 @@ Some exceptions are:
 - `a && b` and `a || b` guarantees that a evaluate before b.
 - `a ? b :c` guarantees that a evaluate before b and c
 - `a,b,c` guarantees that the order is a, then b, then c.
+
 ## Type Conversions
 Operators often involve type conversions in CPP. And unfortunately, CPP is overzealous to do conversions implicitly. It's not a good idea and programmers should pay attention to it.
+
 ### Integer Promotion
 Integer promotion refers to the process when a smaller integer (such as `char`, `short`, and in some cases `bool`) encounters an operator that evaluate outside its range, then it is "promoted" to a larger integer type. 
 ```cpp
@@ -183,6 +190,7 @@ auto result = a * b;
 std::cout << "Type of result: " << typeid(result).name() << std::endl; 
 // Type of result: int
 ```
+
 ### Silent Truncation
 When a number is assigned to a variable which cannot represent it, it be will *silently truncated*. 
 ```cpp
@@ -198,10 +206,13 @@ int main() {
 ```
 - If the destination is `unsigned`, the result is as many bits as it can fits.
 - If the destination is `signed`, the result is undefined.
+
 ### Conversion to bool
 Pointers, integers and float-point numbers can be implicitly converted to bool. The conversion is `true` is the value is nonzero.
+
 ### Pointers to `void*`
 Pointers can always be implicitly converted to `void*`.
+
 ### Explicit Type Conversion
 Braced Initialization ensures that only safe conversions are allowed. This is why modern CPP prefers braced initialization. 
 ```cpp
