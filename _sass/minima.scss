@@ -49,3 +49,34 @@ $on-laptop:        800px !default;
   "minima/layout",
   "minima/syntax-highlighting"
 ;
+
+.note, blockquote.note {
+    background: rgba($brand-color, 0.16);
+    // border-left: $border-radius solid $blue-300;
+    // border-radius: $border-radius;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+    padding: .8rem;
+    letter-spacing: 0;
+    font-style: normal;
+    color: inherit;
+    border-left: none;
+    
+    &::before {
+        color: $brand-color;
+        content: "Note";
+        display: block;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: .75em;
+        padding-bottom: .125rem;
+    }
+    
+    > .important-title {
+      color: $brand-color;
+      display: block;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: .75em;
+      padding-bottom: .125rem;
+    }
+}
