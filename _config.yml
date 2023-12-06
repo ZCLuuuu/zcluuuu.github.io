@@ -18,17 +18,17 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Chew's Everyday Blog
-email: chew.y.feng@outlook.com
+title: Zoe's Everyday Blog
+email: zhanglv0413@163.com
 description: >- # this means to ignore newlines until "baseurl:"
   The heart of the discerning acquires knowledge,
   for the ears of the wise seek it out.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
-github_username:  excitedspider
+github_username:  ZCLuuuu
 
-author: Chew (Qiuyi) Feng
+author: Zoe (Chenlu) Zhang
 
 paginate: 5
 paginate_path: "/page:num/"
