@@ -6,38 +6,34 @@ permalink: /about/
 
 ## Who am I
 
-Hi! I am **Chew (Qiuyi)**. I'm currently a master's student at the **University of Melbourne** studying Computer Science. My current interests include **distributed system**, **computation theory** and **programming languages**. Feel free to contact me if you are interested. 
+Hi! I am **Zoe (Chenlu)**. I'm currently a master's student at the **University of Melbourne** studying Computer Science. My current interests include **distributed system**, **machine learning** and **programming languages**. Feel free to contact me if you are interested. 
 
 ### Education
 
-- July 2016 - June 2020  
+- July 2017 - June 2021  
 
-  Bachelor studies in Software Engineering at the [Southeast University], Nanjing, China 
+  Bachelor studies in Computer Science at the [Nanjing University], Nanjing, China 
 
 - July 2023 - Now
 
   Master student in Computer Science at the [University of Melbourne], Melbourne, Victoria, Australia.
 
-[Southeast University]:https://www.seu.edu.cn/english/
+[Nanjing University]:https://www.nju.edu.cn/en/
 [University of Melbourne]:https://www.unimelb.edu.au/
 
 ### Employment
 
-- January 2022 - July 2023
+- June 2022 - June 2023
 
-  Software Engineer at [ByteDance Ltd] in Tiktok Eng group at Shanghai, China. Focuses on web development. 
+  Compiler Software Engineer at [WAT] in Department of Compiling at Wuxi, China. Focuses on compiler optimization. 
 
-- June 2020 - December 2021
+- June 2021 - May 2022
  
-  Software Engineer at [Tencent Ltd] in Wechat advertisement business group at Shanghai, China. Mainly web and mobile development.
+  Research Assistant at [Nanjing University] in Department of Computer Science and Technology at Nanjing, China. Machine learning.
 
-[Tencent Ltd]: https://www.tencent.com/en-us/
-[ByteDance Ltd]:https://www.bytedance.com/en/
+[Nanjing University]:https://www.nju.edu.cn/en/
+
 
 ## The Blog
 
 I have a long-time hobby of writing and I believe that writing can help me to organize my thoughts. This blog is mainly for me to organize and share the knowledge in the field of CS. After moving to Melbourne, I decided to use English to write a whole new blog, for language practices as well. 
-
-By the way, I used to write a blog in Chinese: [Archive](Archive). Feel free to check it out.
-
-[Archive]: https://excitedspider.github.io/archive.excitedspider.github.io/
