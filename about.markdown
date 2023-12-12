@@ -28,7 +28,7 @@ Hi! I am **Zoe (Chenlu)**. I'm currently a master's student at the **University 
   Compiler Software Engineer at [WAT] in Department of Compiling at Wuxi, China. Focuses on compiler optimization. 
 
 - June 2021 - May 2022
- 
+
   Research Assistant at [Nanjing University] in Department of Computer Science and Technology at Nanjing, China. Machine learning.
 
 [Nanjing University]:https://www.nju.edu.cn/en/
@@ -36,4 +36,4 @@ Hi! I am **Zoe (Chenlu)**. I'm currently a master's student at the **University 
 
 ## The Blog
 
-I have a long-time hobby of writing and I believe that writing can help me to organize my thoughts. This blog is mainly for me to organize and share the knowledge in the field of CS. After moving to Melbourne, I decided to use English to write a whole new blog, for language practices as well. 
+This blog is mainly for me to organize and share the knowledge in the field of CS.
