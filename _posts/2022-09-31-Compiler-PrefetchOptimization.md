@@ -43,8 +43,9 @@ In Figure 3-1, the lower half outlined by the dashed line describes the GCC comp
 
 In the lower half of the dashed line, cc1 is the compiler executable file generated from compiling the GCC source code. Using gdb to trace the cc1 compilation process allows for debugging of the compiler optimization passes. The following command can be used to locate the current compiler's cc1 directory:
 
-> **[zcl@localhost Workshop]$ gcc sum.c -v**
->
+> <pre>
+> <code>
+> <strong>[zcl@localhost Workshop]$ gcc sum.c -v</strong>
 > Using built-in specs.
 > COLLECT_GCC=gcc
 > COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-pc-linux-gnu/8.3.0/lto-wrapper
@@ -53,18 +54,22 @@ In the lower half of the dashed line, cc1 is the compiler executable file genera
 > Thread model: posix
 > gcc version 8.3.0 (GCC) 
 > COLLECT_GCC_OPTIONS='-v' '-mtune=generic' '-march=x86-64'
->  **/usr/local/libexec/gcc/x86_64-pc-linux-gnu/8.3.0/cc1** -quiet -v sum.c -quiet -dumpbase sum.c -mtune=generic -march=x86-64 -auxbase sum -version -o /tmp/ccbNVwAZ.s
+> <strong>/usr/local/libexec/gcc/x86_64-pc-linux-gnu/8.3.0/cc1</strong> -quiet -v sum.c -quiet -dumpbase sum.c -mtune=generic -march=x86-64 -auxbase sum -version -o /tmp/ccbNVwAZ.s
 > GNU C17 (GCC) version 8.3.0 (x86_64-pc-linux-gnu)
-> 	compiled by GNU C version 8.3.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.16.1-GMP
+>     compiled by GNU C version 8.3.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.16.1-GMP
+> </code>
+> </pre>
+>
+> 
 
 The source code is transformed into assembly code through AST, GIMPLE, and RTL. The directories corresponding to these stages in the GCC source code are as follows:
 
 | Directory<font color=silver>*（${GCC-SOURCE} = "gcc-8.3.0/gcc"）*</font> | Function<font color=silver>*（《In-depth Analysis of GCC》Chp03）*</font> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| \${GCC-SOURCE}/${Language}                                   | Responsible for generating AST and genericizing it.          |
-| ${GCC-SOURCE}/                                               | Responsible for generating GIMPLE and RTL.                   |
-| \${GCC-SOURCE}/config/${target}                              | Stores machine description code, which is referenced during the RTL generation process. |
-| ${GCC-SOURCE}/gen*.[ch]                                      | Contains generator code related to the target machine.       |
+| <code>\${GCC-SOURCE}/${Language}</code>                      | Responsible for generating AST and genericizing it.          |
+| <code>${GCC-SOURCE}/</code>                                  | Responsible for generating GIMPLE and RTL.                   |
+| <code>\${GCC-SOURCE}/config/${target}</code>                 | Stores machine description code, which is referenced during the RTL generation process. |
+| <code>${GCC-SOURCE}/gen*.[ch]</code>                         | Contains generator code related to the target machine.       |
 
 Prefetch optimization involves inserting prefetch instructions into the program assembly, specifically by adding calls to the built-in function `__builtin_prefetch()` in the program's GIMPLE sequence. During the conversion process from GIMPLE to RTL, the built-in function is transformed into cache control instructions for the target machine based on RTL instruction templates.
 
@@ -77,7 +82,7 @@ The code responsible for generating GIMPLE and RTL in the mentioned `${GCC-SOURC
 
 > For example, within the GIMPLE optimization passes, there are loop optimization passes located in `tree-ssa-loop.h, tree-ssa-loop.c, tree-ssa-loop-*.c`.
 
-There are four types of Passes in GCC: GIMPLE_PASS, RTL_PASS, SIMPLE_IPA_PASS, and IPA_PASS. Different types of Passes are linked together in a linked list, with the pointer named `pass.sub`.
+There are four types of Passes in GCC: `GIMPLE_PASS`, `RTL_PASS`, `SIMPLE_IPA_PASS`, and `IPA_PASS`. Different types of Passes are linked together in a linked list, with the pointer named `pass.sub`.
 
 Under a major Pass category, there are sub-Passes linked in a list, with the pointer named `pass.next`, as shown in the following diagram example:
 
@@ -93,34 +98,38 @@ Section 6.2 of "In-depth Analysis of GCC" records the names of all Passes under 
 
 When debugging the prefetch optimization pass, it is necessary to trace the Intermediate Language Tree formed by the optimization passes before and after, to observe whether the prefetch functions and instructions have been correctly inserted. Here are the files that are often focused on:
 
-> [zcl@localhost simple_sum]$ gcc sum-ds-demo.c -O2 -fdump-tree-all -fdump-rtl-all -S
-> [zcl@localhost simple_sum]$ ls -lrt
-> total 3624
+> <pre>
+>     <code>
 >
-> ...
->
-> -rw-rw-r--. 1 zcl zcl  1088 Jul 15 04:46 sum-ds-demo.c.011t.cfg                   // To observe the control flow graph and loop information
->
-> ...
->
-> -rw-rw-r--. 1 zcl zcl  1249 Jul 15 04:46 sum-ds-demo.c.164t.cunroll            // To observe the input of the prefetch optimization pass
->
-> -rw-rw-r--. 1 zcl zcl 27748 Jul  7 23:18 sum-ds-demo.c.167t.aprefetch       // To observe the insertion of __builtin_prefetch()
->
-> ...
->
-> -rw-rw-r--. 1 zcl zcl  1204 Jul 15 04:46 sum-ds-demo.c.231t.nrv                  // To observe the last output of -fdump-tree-all
-> -rw-rw-r--. 1 zcl zcl  1250 Jul 15 04:46 sum-ds-demo.c.225t.switchlower
-> -rw-rw-r--. 1 zcl zcl  2186 Jul 15 04:46 sum-ds-demo.c.199t.local-pure-const2
-> -rw-rw-r--. 1 zcl zcl  1328 Jul 15 04:46 sum-ds-demo.c.198t.uncprop1
-> -rw-rw-r--. 1 zcl zcl  1195 Jul 15 04:46 sum-ds-demo.c.232t.optimized      // The last optimization pass may vary between different versions of GCC
-> -rw-rw-r--. 1 zcl zcl  5557 Jul 15 04:46 sum-ds-demo.c.234r.expand          // Built-in functions are converted to insn based on templates here
->
-> ...
->
-> -rw-rw-r--. 1 zcl zcl  5291 Jul 15 04:46 sum-ds-demo.c.235r.vregs              // Note that different prefetches correspond to different insn names, such as second-level prefetch being prefetch_sc_internal; if there's an error corresponding to the Middle-end targetm.code_for_prefetch_sc, it can be checked here
->
-> ...
+>     
+>     [zcl@localhost simple_sum]$ gcc sum-ds-demo.c -O2 -fdump-tree-all -fdump-rtl-all -S
+>     [zcl@localhost simple_sum]$ ls -lrt
+>     total 3624
+>     
+>     ...
+>     
+>     -rw-rw-r--. 1 zcl zcl  1088 Jul 15 04:46 sum-ds-demo.c.011t.cfg                   // To observe the control flow graph and loop information
+>     
+>     ...
+>     
+>     -rw-rw-r--. 1 zcl zcl  1249 Jul 15 04:46 sum-ds-demo.c.164t.cunroll            // To observe the input of the prefetch optimization pass
+>     
+>     -rw-rw-r--. 1 zcl zcl 27748 Jul  7 23:18 sum-ds-demo.c.167t.aprefetch       // To observe the insertion of __builtin_prefetch()
+>     
+>     ...
+>     
+>     -rw-rw-r--. 1 zcl zcl  1204 Jul 15 04:46 sum-ds-demo.c.231t.nrv                  // To observe the last output of -fdump-tree-all
+>     -rw-rw-r--. 1 zcl zcl  1250 Jul 15 04:46 sum-ds-demo.c.225t.switchlower
+>     -rw-rw-r--. 1 zcl zcl  2186 Jul 15 04:46 sum-ds-demo.c.199t.local-pure-const2
+>     -rw-rw-r--. 1 zcl zcl  1328 Jul 15 04:46 sum-ds-demo.c.198t.uncprop1
+>     -rw-rw-r--. 1 zcl zcl  1195 Jul 15 04:46 sum-ds-demo.c.232t.optimized      // The last optimization pass may vary between different versions of GCC
+>     -rw-rw-r--. 1 zcl zcl  5557 Jul 15 04:46 sum-ds-demo.c.234r.expand          // Built-in functions are converted to insn based on templates here
+>     
+>     ...
+>     
+>     -rw-rw-r--. 1 zcl zcl  5291 Jul 15 04:46 sum-ds-demo.c.235r.vregs              // Note that different prefetches correspond to different insn names, such as second-level prefetch being prefetch_sc_internal; if there's an error corresponding to the Middle-end targetm.code_for_prefetch_sc, it can be checked here
+>     
+>     ...
 
 [^2016]: 董钰山,李春江,徐颖.GCC编译器中循环数组预取优化的实现及效果[J].计算机工程与应用,2016,52(6):19-25
 
