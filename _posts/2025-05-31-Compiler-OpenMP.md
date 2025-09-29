@@ -5,13 +5,13 @@ categories: [Compiler]
 description: This is a research proposal. 
 ---
 
- ## Introduction
+## Introduction
 
  OpenACC is a directive-based parallel programming model designed for heterogeneous HPC hardware. However, GCC currently only partially supports the features specified in OpenACC 2.6: some directives are not parsed at all, some are parsed at the front end but are not lowered to generate the appropriate runtime API calls, and the runtime library implementation in GCC is also incomplete. This project aims to address these gaps by proposing feasible solutions to enhance GCC’s OpenACC support to more closely align with the official specification.
 
  
 
- ## Background
+## Background
 
  OpenACC is a parallel programming model for heterogeneous HPC hardware, abstracted into two parts: the host and the attached parallel accelerator, such as a GPU. It provides compiler directives (e.g., in C/C++: `#pragma acc directive-name [clause-list]`) that allow users to specify compute-intensive regions of a program to be offloaded to an accelerator or executed on multiple host cores under the control of a host thread. The **execution model** is host-directed: the host thread manages memory allocation on the accelerator, initiates data transfers, sends code and arguments to the device, queues tasks, waits for completion, retrieves results, and deallocates memory. A key aspect of OpenACC is its **memory model**: accelerator memory is often separate from host memory, requiring explicit data transfers handled by the OpenACC runtime through underlying system calls such as direct memory access (DMA) transfers. Nowadays, most accelerators include caches, and OpenACC requires the compiler to manage these caches [1].
 
@@ -19,7 +19,7 @@ description: This is a research proposal.
 
  
 
- ## Project Goals and Tasks
+## Project Goals and Tasks
 
  GCC currently only partially supports the features specified in OpenACC 2.6. This project aims to enhance GCC's OpenACC support in the following areas:
 
@@ -161,7 +161,7 @@ description: This is a research proposal.
 
  
 
- ## Timeline
+## Timeline
 
  **May 8 – June 1 (Community Bonding Period)**
 
@@ -227,7 +227,7 @@ description: This is a research proposal.
 
  
 
- ## About Me
+## About Me
 
  **Name**: Chenlu Zhang
 
@@ -255,9 +255,9 @@ description: This is a research proposal.
 
  
 
- ## Appendix
+## Appendix
 
- ### acc_memcpy_device: Modified Files Overview
+### acc_memcpy_device: Modified Files Overview
 
  - `libgomp/libgomp.map` declares exported symbols, making `acc_memcpy_device` available for dynamic linking.
  - `libgomp/openacc.h`, `openacc_lib.h`, and `openacc.f90` provide the C/C++ and Fortran interfaces for OpenACC runtime routines.
@@ -268,7 +268,7 @@ description: This is a research proposal.
  - `libgomp/libgomp-plugin.h` defines the standard plugin function prototypes, which will include `GOMP_OFFLOAD_dev2dev`.
  - Plugin source files `libgomp/plugin/plugin-nvptx.c` and `libgomp/plugin/plugin-gcn.c` implement the device-specific logic for NVIDIA and AMD GPUs, respectively. These will be extended to support device-to-device transfers and register the new hook.
 
- ### Cache Directive Support: Modified Files Overview
+### Cache Directive Support: Modified Files Overview
 
  - `config/nvptx/nvptx.opt`: Define device-related command-line options and corresponding flags.
  - `config/nvptx/nvptx.md`: Define RTL templates.
@@ -281,7 +281,7 @@ description: This is a research proposal.
 
  
 
- ## References
+## References
 
  [1] OpenACC Specification: https://www.openacc.org/specification
 
